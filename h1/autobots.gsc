@@ -2,12 +2,16 @@
 /*
     Mod: Autobots
     Developed by DoktorSAS
+	Difficulty addition by Kalitos
+	Tested by BoxOfMysteriez
 */
 
 init()
 {
     level thread onPlayerConnect();
     level thread serverBotFill();
+	level thread setDiffBots();
+	
 }
 onPlayerConnect()
 {
@@ -86,4 +90,16 @@ kickBotOnJoin()
             break;
         }
     }
+}
+
+setDiffBots()
+{
+	for(;;)
+	{
+		level waittill("connected", player);
+		if(isBot(player))
+		{
+			player maps\mp\bots\_bots_util::bot_set_difficulty("default", undefined);
+		}
+	}
 }
